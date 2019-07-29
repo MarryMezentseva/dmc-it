@@ -28,21 +28,32 @@ public class UserControllerIT {
 
     @Test
     public void shouldReturnUserById() {
-        // given
+        //given
         UserDto createdUserDto = createUser();
-        // when
+        //when
         String createdUserUrl = String.format(USER_BY_ID, createdUserDto.getId());
         UserDto userFromResponse = performGet(createdUserUrl, new TypeRef<RestResponse<UserDto>>() {
         }, 200).getPayload();
-        // then
+        //then
         assertNotNull(userFromResponse);
         assertEquals(userFromResponse.getId(), createdUserDto.getId());
         assertEquals(userFromResponse.getFirstName(), createdUserDto.getFirstName());
         assertEquals(userFromResponse.getLastName(), createdUserDto.getLastName());
         assertEquals(userFromResponse.getEmail(), createdUserDto.getEmail());
         assertNull(createdUserDto.getJobPositions());
-        // after
+        //after
         performDelete(createdUserUrl, 200);
+    }
+
+    @Test
+    public void shouldReturn404WhenGetUserById(){
+        //given
+        Integer nonexistentId = Integer.MAX_VALUE;
+        //when
+        UserDto userFromResponse = performGet(String.format(USER_BY_ID, nonexistentId), new TypeRef<RestResponse<UserDto>>() {
+        }, 404).getPayload();
+        //then
+        assertNull(userFromResponse);
     }
 
     protected <T> RestResponse<T> performGet(String url, TypeRef<RestResponse<T>> typeRef, int expectedStatus) {
