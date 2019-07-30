@@ -3,58 +3,59 @@ package com.airplainsoft.it.dto;
 import java.util.List;
 
 public class RestResponse<T> {
-    private List<String> messages;
-    private T payload;
-    private boolean success;
-    private String timestamp;
 
-    public RestResponse(List<String> messages, T payload, boolean success, String timestamp) {
-        this.messages = messages;
-        this.payload = payload;
-        this.success = success;
-        this.timestamp = timestamp;
-    }
+  private List<String> messages;
+  private T payload;
+  private boolean success;
+  private String timestamp;
 
-    public List<String> getMessages() {
-        return messages;
-    }
+  public RestResponse(List<String> messages, T payload, boolean success, String timestamp) {
+    this.messages = messages;
+    this.payload = payload;
+    this.success = success;
+    this.timestamp = timestamp;
+  }
 
-    public void setMessages(List<String> messages) {
-        this.messages = messages;
-    }
+  public List<String> getMessages() {
+    return messages;
+  }
 
-    public T getPayload() {
-        return payload;
-    }
+  public void setMessages(List<String> messages) {
+    this.messages = messages;
+  }
 
-    public void setPayload(T payload) {
-        this.payload = payload;
-    }
+  public T getPayload() {
+    return payload;
+  }
 
-    public boolean isSuccess() {
-        return success;
-    }
+  public void setPayload(T payload) {
+    this.payload = payload;
+  }
 
-    public void setSuccess(boolean success) {
-        this.success = success;
-    }
+  public boolean isSuccess() {
+    return success;
+  }
 
-    public String getTimestamp() {
-        return timestamp;
-    }
+  public void setSuccess(boolean success) {
+    this.success = success;
+  }
 
-    public void setTimestamp(String timestamp) {
-        this.timestamp = timestamp;
-    }
+  public String getTimestamp() {
+    return timestamp;
+  }
 
-    @Override
-    public String toString() {
-        return "RestResponse{" +
-                "messages=" + messages +
-                ", payload=" + payload +
-                ", success=" + success +
-                ", timestamp='" + timestamp + '\'' +
-                '}';
-    }
+  public void setTimestamp(String timestamp) {
+    this.timestamp = timestamp;
+  }
+
+  @Override
+  public String toString() {
+    return "RestResponse{" +
+        "messages=" + messages +
+        ", payload=" + payload +
+        ", success=" + success +
+        ", timestamp='" + timestamp + '\'' +
+        '}';
+  }
 }
 
